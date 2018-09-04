@@ -1,0 +1,28 @@
+#first we install packages
+install.packages("data.table")
+install.packages("stringr")
+
+#next we open them
+get("stringr")
+get("data.table")
+
+#set working directory
+setwd
+
+#get file into R
+comments <- read.csv("YT_comments_debating CC.csv", 
+                     header = TRUE, sep = ",")
+
+#too many columns - I only want two
+text <- data.frame(comments$user, comments$commentText)
+
+#how many entries do we have?
+length(comments$user)
+
+#but what if those were the same people? find unique users
+length(unique(comments$user))
+
+#how many times 'energy' feature?
+sum(str_count(comments$commentText, "energy"))
+
+#and so on...
